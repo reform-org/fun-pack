@@ -57,17 +57,17 @@ function dev(argsRaw) {
       }),
       new CleanWebpackPlugin(),
     ].concat(
-      indexHtml ? [
-        new HtmlWebpackPlugin({
-          template: indexHtml
-        })
-      ] : []
+        indexHtml ? [
+          new HtmlWebpackPlugin({
+            template: indexHtml
+          })
+        ] : []
     ).concat(
-      staticCopyFiles.length > 0 ? new CopyPlugin({
-        patterns: staticCopyFiles.map((f) => {
-          return {from: f, context: Path.dirname(f), force: true};
-        }),
-      }) : []
+        staticCopyFiles.length > 0 ? new CopyPlugin({
+          patterns: staticCopyFiles.map((f) => {
+            return {from: f, context: Path.dirname(f), force: true};
+          }),
+        }) : []
     ).concat([
       new HtmlWebpackTagsPlugin({
         tags: staticCopyFiles.filter((name) => name.endsWith(".js")),
@@ -101,9 +101,10 @@ function dev(argsRaw) {
         })
       },
       // writeToDisk: true,
-      hot: false,
-      hotOnly: false,
-      inline: true,
+      // https://webpack.js.org/configuration/dev-server/#devserverhot
+      hot: 'only',
+      // Inline was removed https://stackoverflow.com/a/70497691/9185797
+      // inline: true,
     },
     output: {path: outputDir},
   })
