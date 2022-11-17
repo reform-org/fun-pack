@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const SriPlugin = require("webpack-subresource-integrity");
+const {SubresourceIntegrityPlugin} = require("webpack-subresource-integrity");
 const {merge} = require("webpack-merge");
 
 const wd = Path.resolve(Path.dirname(module.parent.parent.filename));
@@ -57,7 +57,7 @@ function prod(argsRaw) {
       new MiniCssExtractPlugin({
         filename: "main-[contenthash]-hashed.css",
       }),
-      new SriPlugin({
+      new SubresourceIntegrityPlugin({
         hashFuncNames: ["sha256"],
         enabled: process.env.NODE_ENV === "production",
       }),
