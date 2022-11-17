@@ -82,14 +82,14 @@ function dev(argsRaw) {
       ],
     },
     devServer: {
-      contentBase: [outputDir].concat(assetsDir ? [assetsDir] : []).concat(extraWatchDirs.map(x => x.path)).concat(extraStaticDirs.map(x => x.path)),
+      //contentBase: [outputDir].concat(assetsDir ? [assetsDir] : []).concat(extraWatchDirs.map(x => x.path)).concat(extraStaticDirs.map(x => x.path)),
       allowedHosts: [".localhost"],
-      disableHostCheck: false,
+      //disableHostCheck: false,
       compress: false,
-      watchContentBase: true,
-      watchOptions: {
-        ignored: (f) => f.endsWith(".tmp") || extraStaticDirs.some(d => f.startsWith(d.path))
-      },
+      //watchContentBase: true,
+      //watchOptions: {
+      //  ignored: (f) => f.endsWith(".tmp") || extraStaticDirs.some(d => f.startsWith(d.path))
+      //},
       //TODO: switch to webpack dev server 5, then we do not need this rewrites/ignore workaround for static assets.
       historyApiFallback: {
         rewrites: extraWatchDirs.concat(extraStaticDirs).map(d => {
@@ -102,8 +102,8 @@ function dev(argsRaw) {
       },
       // writeToDisk: true,
       hot: false,
-      hotOnly: false,
-      inline: true,
+      //hotOnly: false,
+      //inline: true,
     },
     output: {path: outputDir},
   })
