@@ -46,11 +46,7 @@ function baseConfig(workingDir, entrypoint) {
     "mode": isProd ? "production" : "development",
     "devtool": "source-map",
     "module": {
-      "rules": [{
-        "test": new RegExp("\\.js$"),
-        "enforce": "pre",
-        "use": ["@fun-stack/source-map-loader-no-warn"]
-      }]
+      "rules": []
     }
   };
 }
